@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{margin: 0;padding: 0}
+		ul li{list-style: none;}
+		ul{overflow: hidden;margin:100px auto;width: 1200px;transform: rotateX(180deg);}
+		li{width: 5px;height: 300px;background: red;margin-left: 1px;float: left;}
+	</style>
+
+	
+</head>
+<body>
+<button onclick="ran()">生成随机数</button>
+<button onclick="maopao_time()">冒泡</button>
+<button onclick="charu_time()" >插入</button>
+<button onclick="erfen_time(arr)">二分插入</button>
+<button onclick="xier_time(arr)">希尔排序</button>
+<span>time:</span>&nbsp;<span id="time"></span>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var arr = new Array();
+	var li_l = document.getElementsByTagName("li");
+	function ran()
+	{
+		arr = [];
+		for(var i = 0;i<200;i++)
+		{
+			var number = parseInt(Math.random()*300)+1;
+			arr.push(number);
+		}
+        for(var j=0;j<200;j++)
+        {
+            li_l[j].style.height = arr[j]+"px";
+        }
+	}
+	function refresh() {
+        for(var k=0;k<arr.length;k++)
+        {
+            li_l[k].style.background = "red";
+        }
+    }
+    function disable_butt() {
+		var butts = document.getElementsByTagName("button");
+		for(var i=0;i<butts.length;i++)
+		{
+		    butts[i].style.disabled = "disabled";
+		}
+    }
+	function maopao_time()
+	{
+        disable_butt();
+		if (t != null) 
+		{
+			clearTimeout(t);
+		}
+		var time = 0;
+		var t;
+		var m = arr.length;
+		var n = 0;
+		function mao(){
+			if (m==2)
+			{
+				clearTimeout(t);
+				return false;
+			}
+			if (n == m-1)
+			{
+				clearTimeout(t);
+				n = 0;
+				m --;
+				mao();
+			}
+            refresh();
+			if(arr[n]>arr[n+1])
+			{
+				var temp = arr[n];
+				arr[n] = arr[n+1];
+				li_l[n].style.height = arr[n]+"px";
+				li_l[n].style.background = "yellow";
+				arr[n+1] = temp;
+				li_l[n+1].style.height = arr[n+1]+"px";
+				li_l[n+1].style.background = "blue";
+			}
+			n++;
+			time +=1;
+			document.getElementById("time").innerHTML = time/1000+"ms"
+			t = setTimeout(arguments.callee, 1);
+		}
+		mao();
+	}
+	// maopao_time();
+	function charu_time()
+	{
+        disable_butt();
+		var time = 0;
+		if (t != null) 
+		clearTimeout(t);
+		var m=1;
+		var temp = arr[m];
+		var n = m-1;
+		var t;
+		cha();
+		function cha()
+		{
+			if(m>=arr.length)
+			{
+				clearTimeout(t);
+				return false;
+			}
+			for(var k=0;k<arr.length;k++)
+			{
+				li_l[k].style.background = "red";
+			}
+			if(n<0)
+			{
+				clearTimeout(t);
+				m++;
+				temp = arr[m];
+				n=m-1;
+				cha();
+			}
+			if(arr[n]>temp)
+			{
+				arr[n+1] = arr[n];
+				li_l[n+1].style.height = arr[n+1]+"px";
+				arr[n] = temp;
+				li_l[n].style.height = arr[n]+"px";
+				n--;
+			}else{
+				clearTimeout(t);
+				m++;
+				temp = arr[m];
+				n=m-1;
+				cha();
+			}
+			time +=1;
+			document.getElementById("time").innerHTML = time/1000+"ms"
+			t=setTimeout(arguments.callee, 1);
+		}
+	}
+
+
+	function erfen_time(arr) {//二分插入排序
+        disable_butt()
+	    var timer;
+		var i = 1;
+		erfen();
+		function erfen() {
+		    if(i>=arr.length){
+		        return false;
+			}
+            var j=i-1;
+            var temp = arr[i];
+            refresh();
+            li_l[i].style.background = "green";
+            var begin = 0;
+            var end = i-1;
+            while(begin<=end)
+            {
+                var mid = parseInt(begin+end);
+                if(temp<arr[mid])
+                {
+                    end = mid-1;
+                }else {
+                    begin = mid+1;
+                }
+            }
+            li_l[begin].style.background = "yellow";
+                var timer = setInterval(function () {
+                    if(j<begin)
+                    {
+                        arr[begin] = temp;
+                        li_l[begin].style.height = arr[begin]+"px";
+                        i++;
+                        clearInterval(timer);
+                        erfen();
+                    }else {
+                        arr[j+1] = arr[j];
+                        li_l[j+1].style.height = arr[j+1]+"px";
+                        j--;
+					}
+                },1)
+            }
+	}
+	
+	function xier_time() {
+        disable_butt();
+		alert("Not ready!!!");
+    }
+</script>
+</html>
