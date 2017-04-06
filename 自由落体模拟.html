@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body,div{margin: 0;padding: 0;}
+		div{border: 1px solid green;}
+		.outside{width: 800px;height: 600px;margin:20px auto;border-bottom: 5px solid #000;position: relative;}
+		.d1{width: 100px;height: 100px;background: red;/*border: 10px solid pink;*/
+			margin: auto;border-radius: 100px;position: absolute;top: 0;left: 50%;margin-left: -50px;}
+	</style>
+	<script type="text/javascript">
+		var t = 0;
+		var v = 0;
+		var h = 0;
+		var hf = 500;
+		var g = 9.8;
+		var time1;
+		var time2;
+		var E;
+		function toFixed(number, decimal) 
+			{
+			  decimal = decimal || 0;
+			  var s = String(number);
+			  var decimalIndex = s.indexOf('.');
+			  if (decimalIndex < 0) {
+			    var fraction = '';
+			    for (var i = 0; i < decimal; i++) {
+			      fraction += '0';
+			    }
+			    return s + '.' + fraction;
+			  }
+			  var numDigits = s.length - 1 - decimalIndex;
+			  if (numDigits <= decimal) {
+			    var fraction = '';
+			    for (var i = 0; i < decimal - numDigits; i++) {
+			      fraction += '0';
+			    }
+			    return s + fraction;
+			  }
+			  var digits = s.split('');
+			  var pos = decimalIndex + decimal;
+			  var roundDigit = digits[pos + 1];
+			  if (roundDigit > 4) {
+			    //跳过小数点
+			    if (pos == decimalIndex) {
+			      --pos;
+			    }
+			    digits[pos] = Number(digits[pos] || 0) + 1;
+			    //循环进位
+				    while (digits[pos] == 10) {
+				      digits[pos] = 0;
+				      --pos;
+				      if (pos == decimalIndex) {
+				        --pos;
+				      }
+				      digits[pos] = Number(digits[pos] || 0) + 1;
+				    }
+					}
+				//避免包含末尾的.符号
+			  if (decimal == 0) {
+			    decimal--;
+		  }
+		  return digits.slice(0, decimalIndex + decimal + 1).join('');
+		}
+		function down()
+		{
+			if(E == 0)
+			{
+				return false;
+			}
+			if (time2 != null) 
+			{
+				clearTimeout(time2);
+			}
+			if (h<0) 
+			{
+				clearTimeout(time1);
+				h = 0;
+				t = 0;
+				v = Math.sqrt(2*E) - 20;
+				up();
+			}
+			else
+			{
+				h = hf-0.5*g*t*t;
+				h = toFixed(h,3);
+				E = 0.5*v*v+g*h;
+				E = toFixed(E,2);
+				document.getElementById("div_in").style.top = 500-h+"px";
+				console.log("v="+v+"; h="+h+"; t="+t+"; E="+E+"; g="+g);
+				t +=0.3;
+				t = toFixed(t,2);
+				v = (v*100 + 0.3*100*g)/100;
+				v = toFixed(v,2);
+				t = t*100/100;
+			}
+			time1 = setTimeout(arguments.callee, 5);
+		}
+		function up()
+		{
+			if (v <= 0) 
+			{
+				v = 0;
+				t = 0;
+				hf = h;
+				down();
+			}
+			else
+			{
+				clearTimeout(time1);
+				h = 0.5*g*t*t;
+				h = toFixed(h,3);
+				E = 0.5*v*v+g*h;
+				E = toFixed(E,2);
+				document.getElementById("div_in").style.top = 500-h+"px";
+				console.log("v="+v+";h="+h+";t="+t+";E="+E+";g="+g);
+				t += 0.3;
+				t = toFixed(t,2);
+				v = (v*100 - 0.3*100*g)/100;
+				v = toFixed(v,2);
+				t = t*100/100;
+				time2 = setTimeout(arguments.callee, 5);
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<div class="outside">
+		<div class="d1" id="div_in" onclick="down()"></div>
+	</div>
+	
+</body>	
+</html>
